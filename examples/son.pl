@@ -7,7 +7,7 @@ prim(sister/2).
 
 %% metarules
 metarule([P,Q,R],([P,A,B]:-[[Q,B,A],[R,A]])).
-metarule([P,Q,R],([P,A]:-[[Q,A,B]])).
+metarule([P,Q],([P,A]:-[[Q,A,B]])).
 
 %% background knowledge
 father(a,b).
