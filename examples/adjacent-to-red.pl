@@ -15,13 +15,28 @@ edge(b,a).
 edge(c,d). 
 edge(c,e). 
 edge(d,e).
+
 colour(a,red).
 colour(b,green). 
 colour(c,red).
 colour(d,red). 
 colour(e,green).
+
 red(red).
 green(green).
+
+% second BK
+% edge(b,c).
+% edge(d,c).
+% 
+% colour(a,red).
+% colour(b,green).
+% colour(c,red).
+% colour(d,red).
+% colour(e,green).
+% 
+% red(red).
+% green(green).
 
 a :-
  Pos = [
@@ -31,6 +46,18 @@ a :-
   Neg = [
     target(a),
     target(d),
+    target(e)
+  ],
+  learn(Pos,Neg).
+
+b :-
+ Pos = [
+    target(b),
+    target(d)
+  ],
+  Neg = [
+    target(a),
+    target(c),
     target(e)
   ],
   learn(Pos,Neg).
