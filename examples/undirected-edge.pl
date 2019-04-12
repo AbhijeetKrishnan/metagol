@@ -12,6 +12,10 @@ edge(a,b).
 edge(b,d).
 edge(c,c).
 
+% second BK
+% edge(a,b).
+% edge(c,d).
+
 a :-
  Pos = [
     target(a,b), 
@@ -19,6 +23,17 @@ a :-
     target(b,d), 
     target(d,b), 
     target(c,c)
+  ],
+  Neg = [
+  ],
+  learn(Pos,Neg).
+
+b :-
+ Pos = [
+    target(a,b), 
+    target(b,a), 
+    target(c,d), 
+    target(d,c)
   ],
   Neg = [
   ],
