@@ -16,8 +16,6 @@ edge(b, c).
 edge(c, a).
 edge(a, d).
 
-
-
 a :-
   Pos = [p(a, b), p(a, c), p(a, a)],
   learn(Pos,[]).
