@@ -1,18 +1,18 @@
 :- use_module('../metagol').
 
 %% tell metagol to use the BK
-prim(num/1).
+body_pred(num/1).
 
 %% metarules
-metarule([P,Q,A],([P,A,B]:-[[Q,A],[Q,B]])).
-metarule([P,Q,B],([P,A,B]:-[[Q,A],[Q,B]])).
+metarule([P,Q,A], [P,A,B], [[Q,A],[Q,B]]).
+metarule([P,Q,B], [P,A,B], [[Q,A],[Q,B]]).
 
 %% background knowledge
 num(X):-
   between(0,inf,X).
 
 
-a :-
+:-
   Pos = [
    q(1,2),
    q(1,3),

@@ -1,13 +1,13 @@
 :- use_module('../metagol').
 
 %% tell Metagol to use the BK
-prim(father/2).
-prim(brother/2).
-prim(sister/2).
+body_pred(father/2).
+body_pred(brother/2).
+body_pred(sister/2).
 
 %% metarules
-metarule([P,Q,R],([P,A,B]:-[[Q,B,A],[R,A]])).
-metarule([P,Q],([P,A]:-[[Q,A,B]])).
+metarule([P,Q,R], [P,A,B], [[Q,B,A],[R,A]]).
+metarule([P,Q,R], [P,A], [[Q,A,B]]).
 
 %% background knowledge
 father(a,b).
@@ -23,7 +23,7 @@ sister(f,c).
 sister(h,i).
 sister(i,h).
 
-a :-
+:-
  Pos = [
     target(b,a),
     target(c,a),

@@ -4,13 +4,13 @@
 metagol:unfold_program.
 
 %% tell Metagol to use the BK
-prim(succ/2).
+body_pred(succ/2).
 
 %% metarules
-metarule([P,Q],([P,A,B]:-[[Q,A,B]])).
-metarule([P,Q,R],([P,A,B]:-[[Q,A,C],[R,C,B]])).
+metarule(ident, [P,Q], [P,A,B], [[Q,A,B]]).
+metarule(chain, [P,Q,R], [P,A,B], [[Q,A,C],[R,C,B]]).
 
-a :-
+:-
   Pos = [
     target(1,3),
     target(2,5),
@@ -32,6 +32,6 @@ a :-
     target(4,0),
     target(10,4),
     target(5,5),
-    target(6,5)  
+    target(6,5)
   ],
   learn(Pos,Neg).

@@ -1,12 +1,14 @@
 :- use_module('../metagol').
 
 %% tell Metagol to use the BK
-prim(succ/2).
+body_pred(succ/2).
 
 %% metarules
-metarule([P,Q],([P,A,B]:-[[Q,B,A]])).
+metarule(ident, [P,Q], [P,A,B], [[Q,A,B]]).
+metarule(inverse, [P,Q], [P,A,B], [[Q,B,A]]).
+metarule(chain, [P,Q,R], [P,A,B], [[Q,A,C],[R,C,B]]).
 
-a :-
+:-
   Pos = [
     target(1,0),
     target(2,1),
@@ -29,6 +31,6 @@ a :-
     target(4,0),
     target(4,10),
     target(5,5),
-    target(5,6)  
+    target(5,6)
   ],
   learn(Pos,Neg).

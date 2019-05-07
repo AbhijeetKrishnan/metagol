@@ -3,6 +3,8 @@
 %% A. Cropper and S.H. Muggleton. Can predicate invention compensate for incomplete background knowledge? SCAI 2015.
 %% A. Cropper and S.H. Muggleton. Logical minimisation of meta-rules within meta-interpretive learning. ILP 2014.
 
+%% in this example we guide the search by giving the chain3 metarule
+
 %% metagol settings
 metagol:functional.
 metagol:max_clauses(6).
@@ -12,14 +14,16 @@ body_pred(move_left/2).
 body_pred(move_right/2).
 body_pred(move_forwards/2).
 body_pred(move_backwards/2).
-body_pred(grab_ball/2).
-body_pred(drop_ball/2).
+%% body_pred(grab_ball/2).
+%% body_pred(drop_ball/2).
 
 %% metarules
+
 metarule(ident, [P,Q], [P,A,B], [[Q,A,B]]).
 metarule(precon, [P,Q,R], [P,A,B], [[Q,A,B],[R,A]]).
 metarule(postcon, [P,Q,R], [P,A,B], [[Q,A,B],[R,B]]).
 metarule(chain, [P,Q,R], [P,A,B], [[Q,A,C],[R,C,B]]).
+metarule(chain3, [Q], [f,A,B], [[grab_ball,A,C],[Q,C,D],[drop_ball,D,B]]).
 
 %% functional check
 func_test(Atom1,Atom2,Condition):-

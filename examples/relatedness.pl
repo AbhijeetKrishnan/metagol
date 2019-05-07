@@ -1,12 +1,12 @@
 :- use_module('../metagol').
 
 %% tell Metagol to use the BK
-prim(parent/2).
+body_pred(parent/2).
 
 %% metarules
-metarule([P,Q],([P,A,B]:-[[Q,A,B]])).
-metarule([P,Q],([P,A,B]:-[[Q,B,A]])).
-metarule([P,Q,R],([P,A,B]:-[[Q,A,C],[R,C,B]])).
+metarule([P,Q], [P,A,B], [[Q,A,B]]).
+metarule([P,Q], [P,A,B], [[Q,B,A]]).
+metarule([P,Q,R], [P,A,B], [[Q,A,C],[R,C,B]]).
 
 %% background knowledge
 parent(a,b).
@@ -16,7 +16,7 @@ parent(c,f).
 parent(d,c).
 parent(g,h).
 
-a :-
+:-
  Pos = [
     target(a,b),
     target(a,c),
